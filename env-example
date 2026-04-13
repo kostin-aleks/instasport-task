@@ -1,0 +1,12 @@
+### General Settings
+SECRET_KEY=
+ALLOWED_HOSTS=
+
+DJANGO_SUPERUSER_EMAIL=
+DJANGO_SUPERUSER_PASSWORD=
+
+### Database
+DATABASE_NAME=db.instasport
+
+# Logging
+LOGGING_DB_BACKENDS=False
