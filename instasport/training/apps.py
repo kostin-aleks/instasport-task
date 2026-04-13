@@ -1,3 +1,5 @@
+""" Application training """
+
 from django.apps import AppConfig
 
 

@@ -1,3 +1,5 @@
+"""Application locations"""
+
 from django.apps import AppConfig
 
 

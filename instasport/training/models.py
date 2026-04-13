@@ -1,8 +1,7 @@
 """
-
+Application training. ORM models
 """
 
-from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -14,16 +13,17 @@ from instasport.utils import slugify_name
 
 class Sport(models.Model):
     """
-
+    Sport
     """
-    name = models.CharField(_('название'), max_length=255)
+
+    name = models.CharField(_("название"), max_length=255)
     slug = models.SlugField(
-        _("slug"), max_length=150, null=True, blank=True, unique=True)
-    description = models.TextField(
-        _("описание"), null=True, blank=True)
+        _("slug"), max_length=150, null=True, blank=True, unique=True
+    )
+    description = models.TextField(_("описание"), null=True, blank=True)
 
     class Meta:
-        db_table = 'sports'
+        db_table = "sports"
         verbose_name = _("Вид спорта")
         verbose_name_plural = _("Виды спорта")
 
@@ -38,8 +38,9 @@ class Sport(models.Model):
 
 class SportsTraining(models.Model):
     """
-
+    Training, workout
     """
+
     class WeekDays(models.IntegerChoices):
         SUNDAY = (1, _("Воскресенье"))
         MONDAY = (2, _("Понедельник"))
@@ -49,23 +50,25 @@ class SportsTraining(models.Model):
         FRIDAY = (6, _("Пятница"))
         SATURDAY = (7, _("Суббота"))
 
-    description = models.TextField(
-        _("описание"), null=True, blank=True)
+    description = models.TextField(_("описание"), null=True, blank=True)
     sporthall = models.ForeignKey(
-        SportHall, on_delete=models.SET_NULL, verbose_name=_("спортзал"), null=True)
+        SportHall, on_delete=models.SET_NULL, verbose_name=_("спортзал"), null=True
+    )
     weekday = models.PositiveIntegerField(choices=WeekDays.choices)
     start_time = models.TimeField()
     end_time = models.TimeField()
     coach = models.ForeignKey(
-        Person, on_delete=models.SET_NULL, verbose_name=_("тренер"), null=True)
+        Person, on_delete=models.SET_NULL, verbose_name=_("тренер"), null=True
+    )
     sport = models.ForeignKey(
-        Sport, on_delete=models.SET_NULL, verbose_name=_("вид спорта"), null=True)
-    is_active = models.BooleanField(_('активный'), default=True)
-    created_at = models.DateTimeField(_('создание'), auto_now_add=True)
-    updated_at = models.DateTimeField(_('изменение'), auto_now_add=True)
+        Sport, on_delete=models.SET_NULL, verbose_name=_("вид спорта"), null=True
+    )
+    is_active = models.BooleanField(_("активный"), default=True)
+    created_at = models.DateTimeField(_("создание"), auto_now_add=True)
+    updated_at = models.DateTimeField(_("изменение"), auto_now_add=True)
 
     class Meta:
-        db_table = 'trainings'
+        db_table = "trainings"
         verbose_name = _("Тренировка")
         verbose_name_plural = _("Тренировки")
 
@@ -74,10 +77,10 @@ class SportsTraining(models.Model):
 
     @property
     def sportclub(self):
-        """"""
+        """get sportclub by hall"""
         return self.sporthall.club.name
 
     @property
     def duration(self):
-        """durations, minutes"""
+        """duration, minutes"""
         return (self.end_time - self.start_time).seconds // 60

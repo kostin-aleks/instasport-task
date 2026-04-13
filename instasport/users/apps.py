@@ -1,3 +1,5 @@
+"""Application users"""
+
 from django.apps import AppConfig
 
 

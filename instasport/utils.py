@@ -11,5 +11,5 @@ def slugify_name(cls, name):
     """
     slug = slugify(name, lowercase=True)
     while cls.objects.filter(slug=slug).count():
-        slug += '-1'
+        slug += "-1"
     return slug

@@ -1,8 +1,7 @@
 """
-
+Application locations. ORM models
 """
 
-from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -10,12 +9,15 @@ from instasport.utils import slugify_name
 
 
 class Country(models.Model):
+    """
+    Country
+    """
+
     name = models.CharField(_("название"), max_length=200, db_index=True)
-    iso = models.CharField(
-        _("iso"), max_length=2, null=True, blank=True, db_index=True)
+    iso = models.CharField(_("iso"), max_length=2, null=True, blank=True, db_index=True)
 
     class Meta:
-        db_table = 'countries'
+        db_table = "countries"
         verbose_name = _("Страна")
         verbose_name_plural = _("Страны")
 
@@ -24,14 +26,20 @@ class Country(models.Model):
 
 
 class City(models.Model):
+    """
+    City
+    """
+
     country = models.ForeignKey(
-        Country, on_delete=models.SET_NULL, verbose_name=_("страна"), null=True)
+        Country, on_delete=models.SET_NULL, verbose_name=_("страна"), null=True
+    )
     name = models.CharField(_("название"), max_length=150, db_index=True)
     slug = models.SlugField(
-        _("slug"), max_length=150, null=True, blank=True, unique=True)
+        _("slug"), max_length=150, null=True, blank=True, unique=True
+    )
 
     class Meta:
-        db_table = 'cities'
+        db_table = "cities"
         verbose_name = _("Город")
         verbose_name_plural = _("Города")
 
@@ -45,15 +53,21 @@ class City(models.Model):
 
 
 class SportClub(models.Model):
+    """
+    Sportclub
+    """
+
     city = models.ForeignKey(
-        City, on_delete=models.SET_NULL, verbose_name=_("спортклуб"), null=True)
+        City, on_delete=models.SET_NULL, verbose_name=_("спортклуб"), null=True
+    )
     name = models.CharField(_("название"), max_length=150, db_index=True)
-    description = models.TextField(_('описание'), null=True, blank=True)
+    description = models.TextField(_("описание"), null=True, blank=True)
     slug = models.SlugField(
-        _("slug"), max_length=150, null=True, blank=True, unique=True)
+        _("slug"), max_length=150, null=True, blank=True, unique=True
+    )
 
     class Meta:
-        db_table = 'sportclubs'
+        db_table = "sportclubs"
         verbose_name = _("Спортклуб")
         verbose_name_plural = _("Спортклубы")
 
@@ -67,14 +81,19 @@ class SportClub(models.Model):
 
 
 class SportHall(models.Model):
+    """
+    Sporthall
+    """
+
     club = models.ForeignKey(
-        SportClub, on_delete=models.SET_NULL, verbose_name=_("спортзал"), null=True)
+        SportClub, on_delete=models.SET_NULL, verbose_name=_("спортзал"), null=True
+    )
     name = models.CharField(_("название"), max_length=150, db_index=True)
-    description = models.TextField(_('описание'), null=True, blank=True)
-    is_active = models.BooleanField(_('активный'), default=True)
+    description = models.TextField(_("описание"), null=True, blank=True)
+    is_active = models.BooleanField(_("активный"), default=True)
 
     class Meta:
-        db_table = 'sporthalls'
+        db_table = "sporthalls"
         verbose_name = _("Спортзал")
         verbose_name_plural = _("Спортзалы")
 

@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "instasport.locations",
     "instasport.training",
-    "instasport.users"
+    "instasport.users",
 ]
 
 MIDDLEWARE = [
@@ -111,9 +111,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "ru"
 LANGUAGES = (
-    ('ru', 'Русский'),
-    ('en', 'English'),
-    ('uk', 'Українська'),
+    ("ru", "Русский"),
+    ("en", "English"),
+    ("uk", "Українська"),
 )
 
 TIME_ZONE = "Europe/Kyiv"
@@ -123,7 +123,7 @@ USE_I18N = True
 USE_TZ = True
 
 LOCALE_PATHS = [
-    BASE_DIR / 'instasport' / 'locale/',
+    BASE_DIR / "instasport" / "locale/",
 ]
 
 # Static files (CSS, JavaScript, Images)
