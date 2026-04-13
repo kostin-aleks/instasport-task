@@ -1,0 +1,166 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-13 13:33+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: instasport/locations/admin.py:13 instasport/locations/models.py:19
+msgid "Страна"
+msgstr ""
+
+#: instasport/locations/admin.py:14 instasport/locations/models.py:20
+msgid "Страны"
+msgstr ""
+
+#: instasport/locations/admin.py:22 instasport/locations/models.py:35
+msgid "Город"
+msgstr ""
+
+#: instasport/locations/admin.py:23 instasport/locations/models.py:36
+msgid "Города"
+msgstr ""
+
+#: instasport/locations/admin.py:32 instasport/locations/models.py:57
+msgid "Спортклуб"
+msgstr ""
+
+#: instasport/locations/admin.py:33 instasport/locations/models.py:58
+msgid "Спортклубы"
+msgstr ""
+
+#: instasport/locations/admin.py:42 instasport/locations/models.py:73
+msgid "Спортзал"
+msgstr ""
+
+#: instasport/locations/admin.py:43 instasport/locations/models.py:74
+msgid "Спортзалы"
+msgstr ""
+
+#: instasport/locations/models.py:13 instasport/locations/models.py:29
+#: instasport/locations/models.py:50 instasport/locations/models.py:67
+#: instasport/training/models.py:19
+msgid "название"
+msgstr ""
+
+#: instasport/locations/models.py:15
+msgid "iso"
+msgstr ""
+
+#: instasport/locations/models.py:28
+msgid "страна"
+msgstr ""
+
+#: instasport/locations/models.py:31 instasport/locations/models.py:53
+#: instasport/training/models.py:21
+msgid "slug"
+msgstr ""
+
+#: instasport/locations/models.py:49
+msgid "спортклуб"
+msgstr ""
+
+#: instasport/locations/models.py:51 instasport/locations/models.py:68
+#: instasport/training/models.py:23 instasport/training/models.py:45
+msgid "описание"
+msgstr ""
+
+#: instasport/locations/models.py:66 instasport/training/models.py:47
+msgid "спортзал"
+msgstr ""
+
+#: instasport/locations/models.py:69 instasport/training/models.py:55
+msgid "активный"
+msgstr ""
+
+#: instasport/training/admin.py:13
+msgid "Вид спорта"
+msgstr ""
+
+#: instasport/training/admin.py:14
+msgid "Виды спорта"
+msgstr ""
+
+#: instasport/training/admin.py:22 instasport/training/models.py:61
+msgid "Тренировка"
+msgstr ""
+
+#: instasport/training/admin.py:23 instasport/training/models.py:62
+msgid "Тренировки"
+msgstr ""
+
+#: instasport/training/models.py:36
+msgid "Воскресенье"
+msgstr ""
+
+#: instasport/training/models.py:37
+msgid "Понедельник"
+msgstr ""
+
+#: instasport/training/models.py:38
+msgid "Вторник"
+msgstr ""
+
+#: instasport/training/models.py:39
+msgid "Среда"
+msgstr ""
+
+#: instasport/training/models.py:40
+msgid "Четверг"
+msgstr ""
+
+#: instasport/training/models.py:41
+msgid "Пятница"
+msgstr ""
+
+#: instasport/training/models.py:42
+msgid "Суббота"
+msgstr ""
+
+#: instasport/training/models.py:52
+msgid "тренер"
+msgstr ""
+
+#: instasport/training/models.py:54
+msgid "вид спорта"
+msgstr ""
+
+#: instasport/training/models.py:56 instasport/users/models.py:18
+msgid "создание"
+msgstr ""
+
+#: instasport/training/models.py:57 instasport/users/models.py:19
+msgid "изменение"
+msgstr ""
+
+#: instasport/users/admin.py:12 instasport/users/models.py:23
+msgid "Пользователь"
+msgstr ""
+
+#: instasport/users/admin.py:13 instasport/users/models.py:24
+msgid "Пользователи"
+msgstr ""
+
+#: instasport/users/models.py:12
+msgid "Клиент"
+msgstr ""
+
+#: instasport/users/models.py:13
+msgid "Тренер"
+msgstr ""
+
+#: instasport/users/models.py:17
+msgid "роль"
+msgstr ""
