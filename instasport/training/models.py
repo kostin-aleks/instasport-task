@@ -6,6 +6,7 @@ from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+
 from instasport.users.models import Person
 from instasport.locations.models import SportHall
 from instasport.utils import slugify_name
@@ -31,11 +32,20 @@ class SportsTraining(models.Model):
     """
 
     """
+    class WeekDays(models.IntegerChoices):
+        SUNDAY = (1, _("Воскресенье"))
+        MONDAY = (2, _("Понедельник"))
+        TUESDAY = (3, _("Вторник"))
+        WEDNESDAY = (4, _("Среда"))
+        THURSDAY = (5, _("Четверг"))
+        FRIDAY = (6, _("Пятница"))
+        SATURDAY = (7, _("Суббота"))
+
     description = models.TextField(
         _("описание"), null=True, blank=True)
     sporthall = models.ForeignKey(
         SportHall, on_delete=models.SET_NULL, verbose_name=_("спортзал"), null=True)
-    weekday = models.IntegerField()
+    weekday = models.PositiveIntegerField(choices=WeekDays.choices)
     start_time = models.TimeField()
     end_time = models.TimeField()
     coach = models.ForeignKey(
@@ -53,3 +63,13 @@ class SportsTraining(models.Model):
 
     def __str__(self) -> str:
         return self.id  # improve it
+
+    @property
+    def sportclub(self):
+        """"""
+        return self.sporthall.club.name
+
+    @property
+    def duration(self):
+        """durations, minutes"""
+        return (self.end_time - self.start_time).seconds // 60
