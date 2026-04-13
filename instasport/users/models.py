@@ -8,8 +8,13 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Person(User):
+    class Role(models.TextChoices):
+        CUSTOMER = ("customer", _("Клиент"))
+        COACH = ("coach", _("Тренер"))
+
     middle_name = models.CharField(max_length=32, null=True, blank=True)
-    # role =
+    role = models.CharField(
+        _('роль'), max_length=30, choices=Role.choices, default=Role.CUSTOMER, db_index=True)
     created_at = models.DateTimeField(_('создание'), auto_now_add=True)
     updated_at = models.DateTimeField(_('изменение'), auto_now_add=True)
 

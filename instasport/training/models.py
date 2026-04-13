@@ -8,6 +8,7 @@ from django.utils.translation import gettext_lazy as _
 
 from instasport.users.models import Person
 from instasport.locations.models import SportHall
+from instasport.utils import slugify_name
 
 
 class Sport(models.Model):
@@ -19,6 +20,11 @@ class Sport(models.Model):
         _("slug"), max_length=150, null=True, blank=True, unique=True)
     description = models.TextField(
         _("описание"), null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify_name(Sport, self.name)
+        return super().save(*args, **kwargs)
 
 
 class SportsTraining(models.Model):

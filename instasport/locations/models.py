@@ -6,6 +6,8 @@ from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from instasport.utils import slugify_name
+
 
 class Country(models.Model):
     name = models.CharField(_("название"), max_length=200, db_index=True)
@@ -35,6 +37,11 @@ class City(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify_name(City, self.name)
+        return super().save(*args, **kwargs)
 
 
 class SportClub(models.Model):
