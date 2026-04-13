@@ -22,6 +22,14 @@ class Sport(models.Model):
     description = models.TextField(
         _("описание"), null=True, blank=True)
 
+    class Meta:
+        db_table = 'sports'
+        verbose_name = _("Вид спорта")
+        verbose_name_plural = _("Виды спорта")
+
+    def __str__(self) -> str:
+        return self.name
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify_name(Sport, self.name)
@@ -62,7 +70,7 @@ class SportsTraining(models.Model):
         verbose_name_plural = _("Тренировки")
 
     def __str__(self) -> str:
-        return self.id  # improve it
+        return f"{self.id}-{self.weekday}/{self.start_time}-{self.end_time}"
 
     @property
     def sportclub(self):

@@ -23,9 +23,7 @@ class AdminSportsTraining(admin.ModelAdmin):
     verbose_name_plural = _('Тренировки')
     list_display = ["id", 'sportclub', 'weekday', 'start_time', 'end_time', 'sport', 'is_active']
     ordering = ('weekday', 'start_time')
-    list_filter = ['sport', 'weekday', 'sporthall__club', 'is_active',
-                   # 'sportclub'
-                   ]
+    list_filter = ['sport', 'weekday', 'sporthall__club', 'is_active',]
 
 
 

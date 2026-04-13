@@ -60,6 +60,11 @@ class SportClub(models.Model):
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify_name(City, self.name)
+        return super().save(*args, **kwargs)
+
 
 class SportHall(models.Model):
     club = models.ForeignKey(
