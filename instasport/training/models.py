@@ -1,3 +1,49 @@
-from django.db import models
+"""
 
-# Create your models here.
+"""
+
+from django.conf import settings
+from django.db import models
+from django.utils.translation import gettext_lazy as _
+
+from instasport.users.models import Person
+from instasport.locations.models import SportHall
+
+
+class Sport(models.Model):
+    """
+
+    """
+    name = models.CharField(_('название'), max_length=255)
+    slug = models.SlugField(
+        _("slug"), max_length=150, null=True, blank=True, unique=True)
+    description = models.TextField(
+        _("описание"), null=True, blank=True)
+
+
+class SportsTraining(models.Model):
+    """
+
+    """
+    description = models.TextField(
+        _("описание"), null=True, blank=True)
+    sporthall = models.ForeignKey(
+        SportHall, on_delete=models.SET_NULL, verbose_name=_("спортзал"), null=True)
+    weekday = models.IntegerField()
+    start_time = models.TimeField()
+    end_time = models.TimeField()
+    coach = models.ForeignKey(
+        Person, on_delete=models.SET_NULL, verbose_name=_("тренер"), null=True)
+    sport = models.ForeignKey(
+        Sport, on_delete=models.SET_NULL, verbose_name=_("вид спорта"), null=True)
+    is_active = models.BooleanField(_('активный'), default=True)
+    created_at = models.DateTimeField(_('создание'), auto_now_add=True)
+    updated_at = models.DateTimeField(_('изменение'), auto_now_add=True)
+
+    class Meta:
+        db_table = 'trainings'
+        verbose_name = _("Тренировка")
+        verbose_name_plural = _("Тренировки")
+
+    def __str__(self) -> str:
+        return self.id  # improve it
