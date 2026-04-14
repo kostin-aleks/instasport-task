@@ -33,4 +33,8 @@ class Person(User):
         verbose_name_plural = _("Пользователи")
 
     def __str__(self):
-        return "user %s: " % (self.username)
+        return f"user {self.username}"
+
+    @property
+    def full_name(self):
+        return f"{self.first_name} {self.middle_name} {self.last_name}"
