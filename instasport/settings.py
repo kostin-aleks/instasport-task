@@ -33,7 +33,6 @@ ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS") or []
 if ALLOWED_HOSTS:
     ALLOWED_HOSTS = ALLOWED_HOSTS.split(',')
 
-STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'instasport' / 'static'
 
 # Application definition
