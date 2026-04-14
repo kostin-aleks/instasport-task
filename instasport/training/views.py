@@ -5,7 +5,7 @@ Application training. Views
 from django.http import HttpResponse
 from django.utils.translation import gettext_lazy as _
 
-from rest_framework import status
+from rest_framework import status, permissions
 from rest_framework.views import APIView
 from rest_framework.generics import RetrieveAPIView
 from rest_framework.response import Response
@@ -31,6 +31,7 @@ class TrainingView(APIView):
     http_method_names = [
         "get",
     ]
+    permission_classes = (permissions.AllowAny,)
 
     def get_queryset(self):
         queryset = (
@@ -68,7 +69,7 @@ class TrainingByIdView(RetrieveAPIView):
     """
     get: Retrieve training by id
     """
-
+    permission_classes = (permissions.AllowAny,)
     serializer_class = TrainingForClientSerializer
 
     def get_queryset(self):
@@ -109,6 +110,7 @@ class SportsView(APIView):
     http_method_names = [
         "get",
     ]
+    permission_classes = (permissions.AllowAny,)
 
     def get_queryset(self):
         queryset = Sport.objects.all().order_by("slug")
@@ -130,6 +132,7 @@ class WeekDayView(APIView):
     http_method_names = [
         "get",
     ]
+    permission_classes = (permissions.AllowAny,)
 
     def get_queryset(self):
         return Sport.objects.none()

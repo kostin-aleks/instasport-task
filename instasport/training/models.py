@@ -1,6 +1,7 @@
 """
 Application training. ORM models
 """
+from datetime import datetime, date
 
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -83,4 +84,7 @@ class SportsTraining(models.Model):
     @property
     def duration(self):
         """duration, minutes"""
-        return (self.end_time - self.start_time).seconds // 60
+        today = date.today()
+        dt1 = datetime.combine(today, self.start_time)
+        dt2 = datetime.combine(today, self.end_time)
+        return (dt2 - dt1).total_seconds() // 60

@@ -17,6 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import include, path
+from django.utils.translation import gettext_lazy as _
 
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
@@ -30,9 +31,9 @@ schema_view = get_schema_view(
     openapi.Info(
         title="Sports Trainings API",
         default_version="v1",
-        description="Test description",
+        description="""АПИ получения расписания тренировок в спортклубах.""",
         terms_of_service="https://www.google.com/policies/terms/",
-        contact=openapi.Contact(email="contact@snippets.local"),
+        contact=openapi.Contact(email="aleksandr.kostin@gmail.com"),
         license=openapi.License(name="BSD License"),
     ),
     public=True,
