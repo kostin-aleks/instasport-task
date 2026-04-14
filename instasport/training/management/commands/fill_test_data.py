@@ -4,6 +4,7 @@ Manage command to fill tables with test data
 
 from faker import Faker
 import random
+import re
 
 from django.core.management.base import BaseCommand
 
@@ -151,7 +152,8 @@ class Command(BaseCommand):
             club, created = SportClub.objects.get_or_create(
                 name=item["name"], city=City.objects.get(slug=item["city"])
             )
-            club.description = item["description"]
+            description = re.sub(r'\s{2,}', ' ', item['description'])
+            club.description = description.strip()
             club.save()
             if not club.slug.startswith(TEST_PREFIX):
                 club.slug = TEST_PREFIX + club.slug
@@ -161,7 +163,8 @@ class Command(BaseCommand):
                 sporthall, created = SportHall.objects.get_or_create(
                     club=club, name=hall["name"]
                 )
-                sporthall.description = hall["description"]
+                description = re.sub(r'\s{2,}', ' ', hall['description'])
+                sporthall.description = description.strip()
                 sporthall.save()
 
         # coaches

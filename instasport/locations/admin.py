@@ -27,6 +27,11 @@ class AdminCity(admin.ModelAdmin):
     list_filter = ["country"]
 
 
+class SportHallInline(admin.TabularInline):
+    model = SportHall
+    # list_display = ["id", "name"]
+
+
 @admin.register(SportClub)
 class AdminSportClub(admin.ModelAdmin):
     verbose_name = _("Спортклуб")
@@ -35,6 +40,7 @@ class AdminSportClub(admin.ModelAdmin):
     search_fields = ("name", "description")
     ordering = ("name",)
     list_filter = ["city"]
+    inlines = [SportHallInline]
 
 
 @admin.register(SportHall)
