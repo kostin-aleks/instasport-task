@@ -13,7 +13,7 @@ from .views import (
 
 urlpatterns = [
     path("", TrainingView.as_view(), name="get-list-trainings"),
-    path("<int:pk>", TrainingByIdView.as_view(), name="get-training-by-id"),
+    path("<int:id>", TrainingByIdView.as_view(), name="get-training-by-id"),
     path("sport", SportsView.as_view(), name="get-list-sport"),
     path("weekdays", WeekDayView.as_view(), name="get-week-days"),
 ]

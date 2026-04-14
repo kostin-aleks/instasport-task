@@ -152,7 +152,7 @@ class Command(BaseCommand):
             club, created = SportClub.objects.get_or_create(
                 name=item["name"], city=City.objects.get(slug=item["city"])
             )
-            description = re.sub(r'\s{2,}', ' ', item['description'])
+            description = re.sub(r"\s{2,}", " ", item["description"])
             club.description = description.strip()
             club.save()
             if not club.slug.startswith(TEST_PREFIX):
@@ -163,7 +163,7 @@ class Command(BaseCommand):
                 sporthall, created = SportHall.objects.get_or_create(
                     club=club, name=hall["name"]
                 )
-                description = re.sub(r'\s{2,}', ' ', hall['description'])
+                description = re.sub(r"\s{2,}", " ", hall["description"])
                 sporthall.description = description.strip()
                 sporthall.save()
 

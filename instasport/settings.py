@@ -35,14 +35,18 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # django apps
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # third-party apps
     "rest_framework",
     "django_filters",
+    "drf_yasg",
+    # local apps
     "instasport.locations",
     "instasport.training",
     "instasport.users",
@@ -140,9 +144,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # DRF settings
 REST_FRAMEWORK = {
-    # 'DEFAULT_AUTHENTICATION_CLASSES': [
-    #    'rest_framework_simplejwt.authentication.JWTAuthentication',
-    # ],
     "DEFAULT_RENDERER_CLASSES": [
         "rest_framework.renderers.JSONRenderer",
     ],
@@ -152,8 +153,6 @@ REST_FRAMEWORK = {
     "DEFAULT_FILTER_BACKENDS": ("django_filters.rest_framework.DjangoFilterBackend",),
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
     "PAGE_SIZE": 10,
-    "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
-    # 'EXCEPTION_HANDLER': 'config.utils.exceptions.core_exception_handler',
     "NON_FIELD_ERRORS_KEY": "detail",
     "COERCE_DECIMAL_TO_STRING": False,
 }
