@@ -33,7 +33,6 @@ ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS") or []
 if ALLOWED_HOSTS:
     ALLOWED_HOSTS = ALLOWED_HOSTS.split(',')
 
-STATIC_ROOT = BASE_DIR / 'instasport' / 'static'
 
 # Application definition
 
@@ -139,6 +138,8 @@ LOCALE_PATHS = [
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
