@@ -6,6 +6,7 @@ from faker import Faker
 import random
 import re
 
+from django.conf import settings
 from django.core.management.base import BaseCommand
 
 from instasport.locations.models import Country, City, SportClub, SportHall
@@ -122,6 +123,24 @@ def create_schedule():
             create_day_schedule(club, wd, sport, coach)
 
 
+def create_admin():
+    """create test admin"""
+    fake = Faker("ru_RU")
+
+    password = settings.SUPERUSER_PASSWORD
+    username = settings.SUPERUSER_USERNAME
+    email = fake.email()
+
+    if not Person.objects.filter(username=username).first():
+        admin = Person.objects.create_superuser(
+            username=username,
+            email=email,
+            password=password
+        )
+    admin.first_name, admin.middle_name, admin.last_name = fake.name().split()
+    admin.save()
+
+
 class Command(BaseCommand):
     """
     This manage command fills tables
@@ -182,5 +201,8 @@ class Command(BaseCommand):
 
         # trainings
         create_schedule()
+
+        # admin
+        create_admin()
 
         print("All test objects added.")

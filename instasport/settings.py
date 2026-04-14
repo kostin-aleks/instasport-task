@@ -27,9 +27,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG") or False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS") or []
+if ALLOWED_HOSTS:
+    ALLOWED_HOSTS = ALLOWED_HOSTS.split(',')
 
 
 # Application definition
@@ -156,3 +158,10 @@ REST_FRAMEWORK = {
     "NON_FIELD_ERRORS_KEY": "detail",
     "COERCE_DECIMAL_TO_STRING": False,
 }
+
+
+SUPERUSER_USERNAME = os.environ['SUPERUSER_USERNAME']
+SUPERUSER_PASSWORD = os.environ['SUPERUSER_PASSWORD']
+
+# Logging
+LOGGING_DB_BACKENDS = False
