@@ -7,3 +7,4 @@ drf-yasg==1.21.15
 Faker==40
 python-dotenv==1.2.2
 python-slugify==8.0.4
+whitenoise[brotli]
